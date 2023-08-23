@@ -1,22 +1,27 @@
 import styled from "styled-components";
+import Header  from "../../components/shared/Header";
+import LoginForm from "../../components/login/LoginForm";
 
-const Container = styled.div`
+const MainContainer = styled.div`
+  height: 100vh;
+`;
+
+const FormContainer = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
-  background: var(--brand-primary);
+  align-items: center;
 `;
-
-const LoginContainer = styled.div`
-  border: 1px solid black;
-`;
-
 
 export default function Login() {
   return (
-    <Container>
-      <LoginContainer>
-        <h1>Login</h1>
-      </LoginContainer>
-    </Container>
+    <>
+      <MainContainer>
+        <Header />
+        <FormContainer>
+          <LoginForm />
+        </FormContainer>
+      </MainContainer>
+    </>
   );
 }

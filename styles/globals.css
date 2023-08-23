@@ -39,3 +39,7 @@
   --shadow-2: 0 24px 32px rgba(0,0,0,.1);
   --shadow-3: 0 50px 80px rgba(0,0,0,.1);
 }
+
+body {
+  margin: 0;
+}
