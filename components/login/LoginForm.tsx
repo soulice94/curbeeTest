@@ -48,7 +48,27 @@ const StyledForm = styled.form`
 
 
 const LoginForm  = () => {
-  const submit = () => {};
+  const submit = async (values: any) => {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    const { message, token } = data;
+    if (message && message === 'Incorrect credentials') {
+      // show alert with error
+      // console.log(message);
+      return;
+    }
+    if (token) { 
+      localStorage.setItem('bee', token);
+      // redirect to dashboard
+    }
+    // alert login error
+  };
   return (
     <LoginContainer>
         <LoginTitle className={lexend.className}>Login</LoginTitle>
@@ -57,10 +77,10 @@ const LoginForm  = () => {
           render={({ handleSubmit, form, submitting, pristine }) => (
           <StyledForm onSubmit={handleSubmit}>
             <Field
-              type="text"
-              name="email"
-              placeholder="Email"
-              component={StyledInput}
+              name="username"
+              render={props => (
+                <StyledInput {...props.input} type='text' placeholder='Username'/>
+              )}
             />
             <Field
               name='password'
