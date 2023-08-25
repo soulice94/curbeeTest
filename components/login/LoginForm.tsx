@@ -1,6 +1,8 @@
 
 import { Form, Field } from 'react-final-form';
 import { Lexend } from 'next/font/google';
+import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 import styled from "styled-components";
 
 const lexend = Lexend({ subsets: ['latin'] });
@@ -48,26 +50,29 @@ const StyledForm = styled.form`
 
 
 const LoginForm  = () => {
+  const router =  useRouter();
   const submit = async (values: any) => {
     const response = await fetch('/api/login', {
       method: 'POST',
       body: JSON.stringify(values),
+      cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    const data = await response.json();
-    const { message, token } = data;
-    if (message && message === 'Incorrect credentials') {
-      // show alert with error
-      // console.log(message);
-      return;
+    const { message } = await response.json();
+    const errorMsg = "Incorrect credentials";
+    if (message === errorMsg) {
+      Swal.fire({
+        title: 'Error!',
+        text: errorMsg,
+        icon: 'error',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--brand-primary')
+      });
+    } else {
+      router.push('/dashboard');
     }
-    if (token) { 
-      localStorage.setItem('bee', token);
-      // redirect to dashboard
-    }
-    // alert login error
   };
   return (
     <LoginContainer>
