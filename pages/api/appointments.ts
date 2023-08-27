@@ -3,11 +3,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const cookies = new Cookies(req, res);
-  const { page, } = req.query;
+  const { page, size } = req.query;
+  const URL = `https://backend.billowing-truth-38ad.workers.dev/api/appointments?page=${page}&size=${size}`;
   const token = cookies.get('token');
-  const response = await fetch('https://backend.billowing-truth-38ad.workers.dev/api/appointments', {
+  const response = await fetch(URL, {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
   });
   const result = await response.json();

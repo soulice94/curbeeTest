@@ -1,6 +1,14 @@
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
 import FreeDates from './freeDates';
+import Appointments from './appointments';
+import styled from "styled-components";
+
+const DashboardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 export async function getServerSideProps(context: any) {
   const req = context.req;
@@ -29,7 +37,16 @@ const DashboardPage = () => {
   return (
     <>
       <h1 style={{color: 'red'}}>Dashboard</h1>
-      <FreeDates /><br/>
+      <DashboardContainer>
+        <div>
+          <h2>Free Dates</h2>
+          <FreeDates />
+        </div>
+        <div>
+          <Appointments />
+        </div>
+      </DashboardContainer>
+      <br/>
       <button onClick={logout}>Logout!!!!</button>
     </>
   );

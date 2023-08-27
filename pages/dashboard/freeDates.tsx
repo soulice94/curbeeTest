@@ -25,9 +25,11 @@ const FreeDates = () => {
     <>
       <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)}/>
       <button onClick={() => searchDates()}>Search</button>
-      <ul>
-        {dates && dates.map((date: any, index: number) => (<li key={index}>{date}</li>))}
-      </ul>
+      {dates && dates.length> 0 && (
+        <ul>
+          {dates.map((date: any, index: number) => (<li key={index}>{date}</li>))}
+        </ul>
+      )}
     </>
   );
 };
