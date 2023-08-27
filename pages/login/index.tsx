@@ -1,3 +1,4 @@
+import { getCookie } from 'cookies-next';
 import styled from "styled-components";
 import Header  from "../../components/shared/Header";
 import LoginForm from "../../components/login/LoginForm";
@@ -12,6 +13,20 @@ const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export async function getServerSideProps(context: any) {
+  const { req, res } = context;
+  const token = getCookie('token', { req, res });
+  if (token) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
+}
 
 export default function Login() {
   return (
