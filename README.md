@@ -1,38 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Curbee Technical Assigment
 
-## Getting Started
+## Abstract
+
+Hello Curbee Team! My name is Pedro Flores and this is the final result of my technical assignment for trying to work at the company. The projects was developed with ```Next.js v13.4.19```, I also used some libraries like ```SweetAlert2```, ```React Final Form``` and ```Styled Components```. Below I'll try to explain my development process and my final thoughts about this technical assigment.
+
+## Technical Detailment Process
+
+1. First I create a fresh instalation from NextJS using typescript as principal language, because I prefer typescript for having good code base with knowledge about the data I need to use and modify. Also I add the styled components library, I really like this library because let me use css components as react components, at first I was working very well but in the developing I was founding some problems with the SSR and I don't have much time to solve it so in the later development I use the css procesor that comes with NextJS. In the end I add the color sheet that comes in the  technical PDF.
+
+2. I add the skeleton for the login form and the header for the app, like this was an early stage the components almost were empty. Basically I just add the css styling.
+
+3. I made the API for the login, before I implement the call in the front end I used ```Postman``` Mac tool for testing the endpoints, when the endpoints give me a good response I save the schema of the response and made the API calls through NextJS API mechanism. Also in this step I try to handle the ```Bearer Token```.
+
+4. In this step I add a first attempt to build a middleware for handle the ```authorization``` in the app, then I had to install the ```cookies``` and ```cookies-next``` packages to handle the logic for the login flow, further I modify the log in endpoint for manage the ```Bearer Token``` in a better way. Also I installed the ```SweetAlert2``` library for show beatiful modals.
+
+5. In this part I completed the login flow adding the token in some calls, also I started to work with the free dates and appointments through the ```API```.
+
+6. Basically in this step I wrote the appointments component, this made the API call to the NextJS local endpoint and populate a first appointments list.
+
+
+
+
+## Final thoughts
+
+
+## Run the project
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
