@@ -41,9 +41,16 @@ const FreeDates = () => {
           <button className="button" style={{ marginLeft: '1rem' }} onClick={() => searchDates()}>Search</button>
         </div>
         {dates && dates.length> 0 && (
-          <ul>
-            {dates.map((date: any, index: number) => (<li key={index}>{date}</li>))}
-          </ul>
+            <table className="tableStyled">
+              <thead>
+                <tr className="trackHead">
+                  <th className="cell">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dates.map((date: any, index: number) => (<tr className="trRow" key={index}><td className="cell">{date}</td></tr>))}
+              </tbody>
+            </table>
         )}
     </>
   );
