@@ -10,7 +10,7 @@ const lexend = Lexend({ subsets: ['latin'] });
 const DashboardContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 export async function getServerSideProps(context: any) {
@@ -36,6 +36,7 @@ const DashboardPage = () => {
   const router = useRouter();
   const logout = async () => {
     await fetch('/api/logout', {});
+    localStorage.removeItem('carbeeToken');
     router.push('/login');
   };
   return (

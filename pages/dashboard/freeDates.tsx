@@ -35,14 +35,16 @@ const FreeDates = () => {
     }
   };
   return (
-    <>
-      <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} minDate={tomorrow}/>
-      <button onClick={() => searchDates()}>Search</button>
-      {dates && dates.length> 0 && (
-        <ul>
-          {dates.map((date: any, index: number) => (<li key={index}>{date}</li>))}
-        </ul>
-      )}
+    <>  
+        <div className="freeDatesContainer">
+          <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} minDate={tomorrow}/>
+          <button className="button" style={{ marginLeft: '1rem' }} onClick={() => searchDates()}>Search</button>
+        </div>
+        {dates && dates.length> 0 && (
+          <ul>
+            {dates.map((date: any, index: number) => (<li key={index}>{date}</li>))}
+          </ul>
+        )}
     </>
   );
 };
