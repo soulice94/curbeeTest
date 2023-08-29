@@ -17,7 +17,7 @@ const FormContainer = styled.div`
 export async function getServerSideProps(context: any) {
   const { req, res } = context;
   const token = getCookie('token', { req, res });
-  if (token) {
+  if (token && token !== 'undefined') {
     return {
       redirect: {
         destination: '/dashboard',

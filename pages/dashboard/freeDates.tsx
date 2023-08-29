@@ -6,6 +6,15 @@ import "react-datepicker/dist/react-datepicker.css";
 const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 
+const buildDates = (dates: string[]) => {
+  return dates.map((date: string) => {
+    const firstPart = date.split('T')[0];
+    const secondPart = date.split('T')[1];
+    const realSecondPart = secondPart.split('.000')[0];
+    return `${firstPart} at ${realSecondPart}`;
+  });
+};
+
 const FreeDates = () => {
   const [startDate, setStartDate] = useState(tomorrow);
   const [dates, setDates] = useState([]);
@@ -16,14 +25,18 @@ const FreeDates = () => {
       cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
+        'Authentication': `Bearer ${localStorage.getItem('token')}`
       },
     });
     const data = await response.json();
-    setDates(data.result.map((date: any) => date.split('T')[0]));
+    if (data && data.result && data.result.length > 0) {
+      // @ts-ignore
+      setDates(buildDates(data.result));
+    }
   };
   return (
     <>
-      <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)}/>
+      <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} minDate={tomorrow}/>
       <button onClick={() => searchDates()}>Search</button>
       {dates && dates.length> 0 && (
         <ul>

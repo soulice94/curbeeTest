@@ -5,6 +5,16 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export async function getServerSideProps(context: any) {
+  return {
+    redirect: {
+      source: '/dashboard',
+      destination: '/authorize?redirect=/dashboard',
+      permanent: false,
+    },
+  };
+}
+
 export default function Home() {
   return (
     <>

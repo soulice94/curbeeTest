@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Lexend } from 'next/font/google';
+
+const lexend = Lexend({ subsets: ['latin'] });
 
 interface Appointment {
   id: string;
@@ -27,7 +30,8 @@ const MainApiCall = async (_page: number, _size: number) => {
     method: 'GET',
     cache: 'no-cache',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authentication': `Bearer ${localStorage.getItem('carbeeToken')}`
     },
   });
   const data = await response.json();
@@ -56,7 +60,7 @@ const Appointments = () => {
   }, []);
   return (
     <>
-      <h1 style={{color: 'red'}}>Appointments</h1>
+      <h1 className={lexend.className} style={{color: 'red'}}>Appointments</h1>
       {appointments && appointments.length > 0 && (
         <ul>
           {appointments.map((appointment: Appointment, index: number) => (<li key={index}>{appointment.workOrder.service}</li>))}

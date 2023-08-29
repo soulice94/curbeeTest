@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const cookies = new Cookies(req, res);
   if (token) {
     cookies.set('token', token);
-    res.json({ success: true });
+    res.json({ success: true , token });
   } else {
     cookies.set('token', undefined);
     res.json({ message });

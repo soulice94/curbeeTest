@@ -60,7 +60,7 @@ const LoginForm  = () => {
         'Content-Type': 'application/json',
       },
     });
-    const { message } = await response.json();
+    const { message, token } = await response.json();
     const errorMsg = "Incorrect credentials";
     if (message === errorMsg) {
       Swal.fire({
@@ -71,6 +71,7 @@ const LoginForm  = () => {
         confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--brand-primary')
       });
     } else {
+      localStorage.setItem('carbeeToken', token);
       router.push('/dashboard');
     }
   };

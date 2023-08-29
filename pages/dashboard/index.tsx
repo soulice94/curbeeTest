@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import FreeDates from './freeDates';
 import Appointments from './appointments';
 import styled from "styled-components";
+import { Lexend } from 'next/font/google';
+
+const lexend = Lexend({ subsets: ['latin'] });
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -14,10 +17,11 @@ export async function getServerSideProps(context: any) {
   const req = context.req;
   const res = context.res;
   const token = getCookie('token', { req, res });
-  if (!token) {
+  if (!token || token === 'undefined') {
     return {
       redirect: {
-        destination: '/login',
+        source: '/dashboard', 
+        destination: '/authorize?redirect=/dashboard',
         permanent: false,
       },
     };
@@ -36,10 +40,10 @@ const DashboardPage = () => {
   };
   return (
     <>
-      <h1 style={{color: 'red'}}>Dashboard</h1>
+      <h1 className={lexend.className} style={{color: 'red'}}>Dashboard</h1>
       <DashboardContainer>
         <div>
-          <h2>Free Dates</h2>
+          <h2 className={lexend.className}>Free Dates</h2>
           <FreeDates />
         </div>
         <div>
