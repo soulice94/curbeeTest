@@ -35,7 +35,8 @@ const FreeDates = () => {
     }
   };
   return (
-    <>  
+    <>
+      <div className="datesContainer">
         <div className="freeDatesContainer">
           <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} minDate={tomorrow}/>
           <button className="button" style={{ marginLeft: '1rem' }} onClick={() => searchDates()}>Search</button>
@@ -52,6 +53,7 @@ const FreeDates = () => {
               </tbody>
             </table>
         )}
+      </div>  
     </>
   );
 };

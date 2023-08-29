@@ -12,6 +12,9 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export async function getServerSideProps(context: any) {

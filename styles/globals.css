@@ -193,3 +193,12 @@ div.header {
 .button.strong{
   font-weight: 600;
 }
+
+div.datesContainer {
+  @media only screen and (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
