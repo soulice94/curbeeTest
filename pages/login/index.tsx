@@ -5,6 +5,10 @@ import LoginForm from "../../components/login/LoginForm";
 
 const MainContainer = styled.div`
   height: 100vh;
+  background-color: var(--brand-primary);
+  background-image: url('bluecar.jpg');
+  background-position: center;
+  background-size: cover;
 `;
 
 const FormContainer = styled.div`

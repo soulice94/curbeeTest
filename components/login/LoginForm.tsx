@@ -12,6 +12,7 @@ const LoginContainer = styled.div`
   width: 100%;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: var(--background-color-body);
 `;
 
 const LoginTitle = styled.h3`
