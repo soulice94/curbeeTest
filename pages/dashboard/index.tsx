@@ -4,6 +4,7 @@ import FreeDates from './freeDates';
 import Appointments from './appointments';
 import styled from "styled-components";
 import { Lexend } from 'next/font/google';
+import Header from './header';
 
 const lexend = Lexend({ subsets: ['latin'] });
 
@@ -33,15 +34,9 @@ export async function getServerSideProps(context: any) {
 }
 
 const DashboardPage = () => {
-  const router = useRouter();
-  const logout = async () => {
-    await fetch('/api/logout', {});
-    localStorage.removeItem('carbeeToken');
-    router.push('/login');
-  };
   return (
     <>
-      <h1 className={lexend.className} style={{color: 'red'}}>Dashboard</h1>
+      <Header />
       <DashboardContainer>
         <div>
           <h2 className={lexend.className}>Free Dates</h2>
@@ -52,7 +47,6 @@ const DashboardPage = () => {
         </div>
       </DashboardContainer>
       <br/>
-      <button onClick={logout}>Logout!!!!</button>
     </>
   );
 };

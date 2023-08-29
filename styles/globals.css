@@ -177,3 +177,19 @@ h1 {
   font-family: var(--font-face-body);
   margin: 0 1rem;
 }
+
+div.header {
+  width: 100%;
+  height: 100px;
+  background-color: var(--brand-primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+.button.strong{
+  font-weight: 600;
+}
